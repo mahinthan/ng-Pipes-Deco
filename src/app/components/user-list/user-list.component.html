@@ -1,0 +1,15 @@
+<div class="container">
+	<h3>Users</h3>
+	
+	<input type="text" class="form-control" [(ngModel)]="userName" placeholder="Type in the name of the user to add or we'll give it a placeholder name"><br>
+	<button class="btn btn-primary" (click)="addUser()">Add User</button>
+	
+	<hr>
+	<ul class="list-group">
+		<li class="list-group-item"
+			*ngFor="let user of users"
+			[ngClass]="user.id % 2 === 0 ? 'list-group-item-success' : 'list-group-item-warning'">
+			<app-user-list-item [user]="user"></app-user-list-item>
+		</li>
+	</ul>
+</div>

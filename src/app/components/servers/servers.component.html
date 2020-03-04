@@ -1,0 +1,22 @@
+<div class="container">
+  <!-- <h3>App Status is {{ appStatus }}</h3> -->
+  <h3>Servers</h3>
+  <h4>Filter Servers List by Status: </h4>
+  <label class="form-control"><input type="radio" [(ngModel)]="serverStatus" value="stable" name="optradio"> Stable</label>
+  <label class="form-control"><input type="radio" [(ngModel)]="serverStatus" value="offline" name="optradio"> Offline</label>
+  
+  <br>
+  <button (click)="addServer()"
+          class="btn btn-primary">Add Server</button>
+  <hr>
+  <ul class="list-group">
+    <li class="list-group-item"
+        *ngFor="let server of servers" 
+        [ngClass]="server.status === 'stable' ? 'list-group-item-success' : 'list-group-item-warning'">
+        {{ server.name | uppercase }} | 
+        {{ server.size | uppercase }} | 
+        {{ server.creationDate | date:'fullDate' }} 
+        <span class="badge">{{ server.status }}</span>
+    </li>
+  </ul>
+</div>
